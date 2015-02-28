@@ -6,14 +6,14 @@ public class error {
 	String nodeName, mediaType, summary;
 	Timestamp firstOccur;
 
-	public error(int sev, int ct, String node, String media,
-			Timestamp firstOcc, String smry) {
+	public error(int sev, int ct, String node, String media, String firstOcc,
+			String smry) {
 
 		severity = sev;
 		count = ct;
 		nodeName = node;
 		mediaType = media;
-		firstOccur = firstOcc;
+		setFirstOccur(firstOcc);
 		summary = smry;
 
 	}

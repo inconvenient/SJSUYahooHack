@@ -15,6 +15,8 @@ public class csvParser {
 		BufferedReader br = null;
 		String line = "";
 		String cvsSplitBy = "\\|"; // Escape the |
+		ArrayList<error> errorDB = new ArrayList<error>();
+		int count = 0;
 
 		// Severity|Count|Node|Property|First Occurrence|Summary
 
@@ -22,22 +24,26 @@ public class csvParser {
 			br = new BufferedReader(new FileReader(csvFile));
 
 			while ((line = br.readLine()) != null) {
+
 				String[] tempError = line.split(cvsSplitBy); // Split by |
 
-				ArrayList<error> errorDB = new ArrayList<error>();
 				errorDB.add(new error(Integer.parseInt(tempError[0]), Integer
 						.parseInt(tempError[1]), tempError[2], tempError[3],
 						tempError[4], tempError[5]));
 
-				for (error e : errorDB) {
-					System.out.println("Severity: " + e.getSeverity()
-							+ " | Count: " + e.getCount() + " | Node: "
-							+ e.getNode() + " | Media: " + e.getMedia()
-							+ " | First Occured: " + e.getFirstOccur()
-							+ " | Summary: " + e.getSummary());
-				}
+				count++;
+			}
+
+			for (error e : errorDB) {
+				System.out.println("Severity: " + e.getSeverity()
+						+ " | Count: " + e.getCount() + " | Node: "
+						+ e.getNode() + " | Media: " + e.getMedia()
+						+ " | First Occured: " + e.getFirstOccur()
+						+ " | Summary: " + e.getSummary());
 
 			}
+
+			System.out.println("Count: " + count);
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
