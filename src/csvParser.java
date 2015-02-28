@@ -6,22 +6,29 @@ import java.util.ArrayList;
 
 public class csvParser {
 
+	public ArrayList<error> mailDB;
+	public ArrayList<error> flickrDB;
+	public ArrayList<error> mediaDB;
+	public ArrayList<error> msgDB;
+	public ArrayList<error> searchDB;
+	public ArrayList<error> revDB;
+	public ArrayList<error> fpDB;
+
 	public void run() {
 
-		String csvFile = "/Users/Benton/Downloads/final_alert_file.csv"; // Change
-																			// location
-																			// if
-																			// necessary
+		String csvFile = "/Users/Benton/Downloads/final_alert_file.csv"; // LOCATION
 		BufferedReader br = null;
 		String line = "";
 		String cvsSplitBy = "\\|"; // Escape the |
-		ArrayList<error> mailDB = new ArrayList<error>();
-		ArrayList<error> msgDB = new ArrayList<error>();
-		ArrayList<error> flickrDB = new ArrayList<error>();
-		ArrayList<error> mediaDB = new ArrayList<error>();
-		ArrayList<error> searchDB = new ArrayList<error>();
-		ArrayList<error> revDB = new ArrayList<error>();
-		ArrayList<error> fpDB = new ArrayList<error>();
+
+		// ARRAYS TO STORE EACH ERRORTYPE
+		mailDB = new ArrayList<error>();
+		msgDB = new ArrayList<error>();
+		flickrDB = new ArrayList<error>();
+		mediaDB = new ArrayList<error>();
+		searchDB = new ArrayList<error>();
+		revDB = new ArrayList<error>();
+		fpDB = new ArrayList<error>();
 
 		// Severity|Count|Node|Property|First Occurrence|Summary
 
@@ -64,14 +71,15 @@ public class csvParser {
 
 			}
 
-			for (error e : msgDB) { // Change DB Name depending on what you want
-
-				System.out.println("Severity: " + e.getSeverity()
-						+ " | Count: " + e.getCount() + " | Node: "
-						+ e.getNode() + " | Media: " + e.getMedia()
-						+ " | First Occured: " + e.getFirstOccur()
-						+ " | Summary: " + e.getSummary());
-			}
+			/*
+			 * for (error e : msgDB) { // Change DB Name depending on what you
+			 * want
+			 * 
+			 * System.out.println("Severity: " + e.getSeverity() + " | Count: "
+			 * + e.getCount() + " | Node: " + e.getNode() + " | Media: " +
+			 * e.getMedia() + " | First Occured: " + e.getFirstOccur() +
+			 * " | Summary: " + e.getSummary()); }
+			 */
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
