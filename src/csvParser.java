@@ -16,7 +16,6 @@ public class csvParser {
 		String line = "";
 		String cvsSplitBy = "\\|"; // Escape the |
 		ArrayList<error> errorDB = new ArrayList<error>();
-		int count = 0;
 
 		// Severity|Count|Node|Property|First Occurrence|Summary
 
@@ -30,20 +29,18 @@ public class csvParser {
 				errorDB.add(new error(Integer.parseInt(tempError[0]), Integer
 						.parseInt(tempError[1]), tempError[2], tempError[3],
 						tempError[4], tempError[5]));
-
-				count++;
 			}
 
 			for (error e : errorDB) {
+
 				System.out.println("Severity: " + e.getSeverity()
 						+ " | Count: " + e.getCount() + " | Node: "
 						+ e.getNode() + " | Media: " + e.getMedia()
 						+ " | First Occured: " + e.getFirstOccur()
 						+ " | Summary: " + e.getSummary());
-
 			}
 
-			System.out.println("Count: " + count);
+			System.out.println("Total Errors Parsed: " + errorDB.size());
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
