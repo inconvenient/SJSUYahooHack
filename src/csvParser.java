@@ -15,7 +15,13 @@ public class csvParser {
 		BufferedReader br = null;
 		String line = "";
 		String cvsSplitBy = "\\|"; // Escape the |
-		ArrayList<error> errorDB = new ArrayList<error>();
+		ArrayList<error> mailDB = new ArrayList<error>();
+		ArrayList<error> msgDB = new ArrayList<error>();
+		ArrayList<error> flickrDB = new ArrayList<error>();
+		ArrayList<error> mediaDB = new ArrayList<error>();
+		ArrayList<error> searchDB = new ArrayList<error>();
+		ArrayList<error> revDB = new ArrayList<error>();
+		ArrayList<error> fpDB = new ArrayList<error>();
 
 		// Severity|Count|Node|Property|First Occurrence|Summary
 
@@ -26,12 +32,39 @@ public class csvParser {
 
 				String[] tempError = line.split(cvsSplitBy); // Split by |
 
-				errorDB.add(new error(Integer.parseInt(tempError[0]), Integer
-						.parseInt(tempError[1]), tempError[2], tempError[3],
-						tempError[4], tempError[5]));
+				if (tempError[3].equals("Frontpage")) {
+					fpDB.add(new error(Integer.parseInt(tempError[0]), Integer
+							.parseInt(tempError[1]), tempError[2],
+							tempError[3], tempError[4], tempError[5]));
+				} else if (tempError[3].equals("Mail")) {
+					mailDB.add(new error(Integer.parseInt(tempError[0]),
+							Integer.parseInt(tempError[1]), tempError[2],
+							tempError[3], tempError[4], tempError[5]));
+				} else if (tempError[3].equals("Messenger")) {
+					msgDB.add(new error(Integer.parseInt(tempError[0]), Integer
+							.parseInt(tempError[1]), tempError[2],
+							tempError[3], tempError[4], tempError[5]));
+				} else if (tempError[3].equals("Search")) {
+					searchDB.add(new error(Integer.parseInt(tempError[0]),
+							Integer.parseInt(tempError[1]), tempError[2],
+							tempError[3], tempError[4], tempError[5]));
+				} else if (tempError[3].equals("Media")) {
+					mediaDB.add(new error(Integer.parseInt(tempError[0]),
+							Integer.parseInt(tempError[1]), tempError[2],
+							tempError[3], tempError[4], tempError[5]));
+				} else if (tempError[3].equals("Revenue")) {
+					revDB.add(new error(Integer.parseInt(tempError[0]), Integer
+							.parseInt(tempError[1]), tempError[2],
+							tempError[3], tempError[4], tempError[5]));
+				} else if (tempError[3].equals("Flickr")) {
+					flickrDB.add(new error(Integer.parseInt(tempError[0]),
+							Integer.parseInt(tempError[1]), tempError[2],
+							tempError[3], tempError[4], tempError[5]));
+				}
+
 			}
 
-			for (error e : errorDB) {
+			for (error e : msgDB) { // Change DB Name depending on what you want
 
 				System.out.println("Severity: " + e.getSeverity()
 						+ " | Count: " + e.getCount() + " | Node: "
@@ -39,8 +72,6 @@ public class csvParser {
 						+ " | First Occured: " + e.getFirstOccur()
 						+ " | Summary: " + e.getSummary());
 			}
-
-			System.out.println("Total Errors Parsed: " + errorDB.size());
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

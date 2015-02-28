@@ -4,5 +4,4 @@ public class RunProgram {
 		csvParser csvP = new csvParser();
 		csvP.run();
 	}
-
 }
