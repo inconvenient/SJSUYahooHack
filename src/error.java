@@ -18,6 +18,17 @@ public class error {
 
 	}
 
+	public void setFirstOccur(String i) {
+		int year, month, date, hour, minute, second;
+		year = Integer.parseInt(i.substring(0, 4));
+		month = Integer.parseInt(i.substring(5, 7));
+		date = Integer.parseInt(i.substring(8, 10));
+		hour = Integer.parseInt(i.substring(11, 13));
+		minute = Integer.parseInt(i.substring(14, 16));
+		second = Integer.parseInt(i.substring(17, 19));
+		firstOccur = new Timestamp(year, month, date, hour, minute, second, 0);
+	}
+
 	public void setSeverity(int i) {
 		severity = i;
 	}
