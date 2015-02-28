@@ -1,9 +1,13 @@
-public class error {
-	int severity = 0, count = 0;
-	String nodeName, mediaType, firstOccur, summary;
+import java.sql.Timestamp;
 
-	public error(int sev, int ct, String node, String media, String firstOcc,
-			String smry) {
+public class error {
+
+	int severity = 0, count = 0;
+	String nodeName, mediaType, summary;
+	Timestamp firstOccur;
+
+	public error(int sev, int ct, String node, String media,
+			Timestamp firstOcc, String smry) {
 
 		severity = sev;
 		count = ct;
@@ -30,7 +34,7 @@ public class error {
 		mediaType = i;
 	}
 
-	public void setFirstOccur(String i) {
+	public void setFirstOccur(Timestamp i) {
 		firstOccur = i;
 	}
 
@@ -55,7 +59,7 @@ public class error {
 	}
 
 	public String getFirstOccur() {
-		return firstOccur;
+		return firstOccur.toString();
 	}
 
 	public String getSummary() {

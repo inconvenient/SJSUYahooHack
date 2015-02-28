@@ -8,7 +8,10 @@ public class csvParser {
 
 	public void run() {
 
-		String csvFile = "/Users/Benton/Downloads/final_alert_file.csv"; // Change location if necessary
+		String csvFile = "/Users/Benton/Downloads/final_alert_file.csv"; // Change
+																			// location
+																			// if
+																			// necessary
 		BufferedReader br = null;
 		String line = "";
 		String cvsSplitBy = "\\|"; // Escape the |
@@ -26,11 +29,13 @@ public class csvParser {
 						.parseInt(tempError[1]), tempError[2], tempError[3],
 						tempError[4], tempError[5]));
 
-				System.out.println("Error [Severity= " + tempError[0]
-						+ " , Count=" + tempError[1] + " , Node="
-						+ tempError[2] + " , Property=" + tempError[3]
-						+ " , First Occur=" + tempError[4] + " , Summary="
-						+ tempError[5] + "]");
+				for (error e : errorDB) {
+					System.out.println("Severity: " + e.getSeverity()
+							+ " | Count: " + e.getCount() + " | Node: "
+							+ e.getNode() + " | Media: " + e.getMedia()
+							+ " | First Occured: " + e.getFirstOccur()
+							+ " | Summary: " + e.getSummary());
+				}
 
 			}
 
