@@ -6,13 +6,9 @@ import java.util.ArrayList;
 
 public class csvParser {
 
-	public ArrayList<error> mailDB;
-	public ArrayList<error> flickrDB;
-	public ArrayList<error> mediaDB;
-	public ArrayList<error> msgDB;
-	public ArrayList<error> searchDB;
-	public ArrayList<error> revDB;
-	public ArrayList<error> fpDB;
+	public ArrayList<ArrayList> MainList = new ArrayList<ArrayList>();
+	public ArrayList<error> mailDB, flickrDB, mediaDB, msgDB, searchDB, revDB,
+			fpDB;
 
 	public void run() {
 
@@ -29,6 +25,15 @@ public class csvParser {
 		searchDB = new ArrayList<error>();
 		revDB = new ArrayList<error>();
 		fpDB = new ArrayList<error>();
+
+		// ArrayList that stores each ErrorType ArrayList
+		MainList.add(mailDB);
+		MainList.add(msgDB);
+		MainList.add(flickrDB);
+		MainList.add(mediaDB);
+		MainList.add(searchDB);
+		MainList.add(revDB);
+		MainList.add(fpDB);
 
 		// Severity|Count|Node|Property|First Occurrence|Summary
 

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Collections;
 
 public class RunProgram {
@@ -6,9 +7,11 @@ public class RunProgram {
 		csvParser csvP = new csvParser();
 		csvP.run();
 
-		Collections.sort(csvP.flickrDB, new compareProperty());
+		for (ArrayList list : csvP.MainList) {
+			Collections.sort(list, new compareProperty());
+		}
 
-		for (error e : csvP.flickrDB) {
+		for (error e : csvP.msgDB) { // Change DB based on Query
 			System.out.println("Severity: " + e.getSeverity() + " | Count: "
 					+ e.getCount() + " | Node: " + e.getNode() + " | Media: "
 					+ e.getMedia() + " | First Occured: " + e.getFirstOccur()
